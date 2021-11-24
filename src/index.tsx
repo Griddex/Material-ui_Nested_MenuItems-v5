@@ -1,9 +1,10 @@
 import React, {useState, useRef, useImperativeHandle} from 'react'
-import {makeStyles} from '@material-ui/core/styles'
-import Menu, {MenuProps} from '@material-ui/core/Menu'
-import MenuItem, {MenuItemProps} from '@material-ui/core/MenuItem'
-import ArrowRight from '@material-ui/icons/ArrowRight'
+import Menu, {MenuProps} from '@mui/material/Menu'
+import MenuItem, {MenuItemProps} from '@mui/material/MenuItem'
+import ArrowRight from '@mui/icons-material/ArrowRight'
 import clsx from 'clsx'
+import makeStyles from '@mui/styles/makeStyles'
+import {Theme} from '@mui/material'
 
 export interface NestedMenuItemProps extends Omit<MenuItemProps, 'button'> {
   /**
@@ -41,7 +42,7 @@ export interface NestedMenuItemProps extends Omit<MenuItemProps, 'button'> {
 }
 
 const TRANSPARENT = 'rgba(0,0,0,0)'
-const useMenuItemStyles = makeStyles((theme) => ({
+const useMenuItemStyles = makeStyles((theme: Theme) => ({
   root: (props: any) => ({
     backgroundColor: props.open ? theme.palette.action.hover : TRANSPARENT
   })
@@ -71,7 +72,7 @@ const NestedMenuItem = React.forwardRef<
   const {ref: containerRefProp, ...ContainerProps} = ContainerPropsProp
 
   const menuItemRef = useRef<HTMLLIElement>(null)
-  useImperativeHandle(ref, () => menuItemRef.current)
+  useImperativeHandle(ref, () => menuItemRef.current as HTMLLIElement)
 
   const containerRef = useRef<HTMLDivElement>(null)
   useImperativeHandle(containerRefProp, () => containerRef.current)
