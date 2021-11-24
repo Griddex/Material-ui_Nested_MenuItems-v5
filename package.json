@@ -1,6 +1,6 @@
 {
   "name": "material-ui-nested-menu-item-v5",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Infinite nested material menus",
   "repository": {
     "type": "git",
@@ -8,11 +8,10 @@
   },
   "scripts": {
     "test": "echo \"No units tests.\"",
-    "build": "pika build",
-    "publish": "pika publish",
+    "build": "react-scripts build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "version": "npm run build"
+    "typecheck": "tsc"
   },
   "keywords": [
     "react",
@@ -65,6 +64,9 @@
             "stories/**/*"
           ]
         }
+      ],
+      [
+        "@pika/plugin-build-web"
       ]
     ]
   },
